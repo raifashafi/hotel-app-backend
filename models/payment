@@ -1,0 +1,34 @@
+// models/payment.js
+const mongoose = require('mongoose');
+
+const paymentSchema = new mongoose.Schema({
+    cardnum: {
+        type: String,
+        required: true,
+        minlength: 12,
+        maxlength: 16
+    },
+    cvv: {
+        type: String,
+        required: true,
+        length: 3
+    },
+    dob: {
+        type: String,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    totalAmount: {
+        type: Number,
+        required: true,
+        min: 1
+    }
+}, {
+    timestamps: true // Adds createdAt and updatedAt timestamps
+});
+
+const Paymentmodel = mongoose.model('Payment', paymentSchema);
+module.exports = Paymentmodel;
